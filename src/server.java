@@ -130,5 +130,27 @@ class Server implements ActionListener {
             e.printStackTrace();
         }
     }
+    public static JPanel formatLabel(String out) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        JLabel output = new JLabel("<html><p style=\"width: 150px\">" + out + "</p></html>");
+        output.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        output.setBackground(new Color(37, 211, 102));
+        output.setOpaque(true);
+        output.setBorder(new EmptyBorder(15, 15, 15, 50));
+
+        panel.add(output);
+
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+        JLabel time = new JLabel();
+        time.setText(sdf.format(cal.getTime()));
+
+        panel.add(time);
+
+        return panel;
+    }
     
 
