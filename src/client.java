@@ -105,3 +105,29 @@ public class Client implements ActionListener {
 
         f.setVisible(true);
     }
+    public void actionPerformed(ActionEvent ae) {
+        try {
+            String out = text.getText();
+
+            JPanel p2 = formatLabel(out);
+
+            a1.setLayout(new BorderLayout());
+
+            JPanel right = new JPanel(new BorderLayout());
+            right.add(p2, BorderLayout.LINE_END);
+            vertical.add(right);
+            vertical.add(Box.createVerticalStrut(15));
+
+            a1.add(vertical, BorderLayout.PAGE_START);
+
+            dout.writeUTF(out);
+
+            text.setText("");
+
+            f.repaint();
+            f.invalidate();
+            f.validate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
